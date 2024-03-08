@@ -1,4 +1,4 @@
-package com.kjoseph.portfolioMS.backend.entities;
+package com.kjoseph.portfolioMS.backend.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

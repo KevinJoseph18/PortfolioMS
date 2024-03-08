@@ -1,4 +1,4 @@
-package com.kjoseph.portfolioMS.backend;
+package com.kjoseph.portfolioMS.backend.security;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.kjoseph.portfolioMS.backend.entities.User;
+import com.kjoseph.portfolioMS.backend.model.User;
 
 public class UserDetailsPMS implements UserDetails {
 	private User user;

@@ -1,11 +1,10 @@
-package com.kjoseph.portfolioMS.backend.service;
+package com.kjoseph.portfolioMS.backend.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.kjoseph.portfolioMS.backend.UserDetailsPMS;
-import com.kjoseph.portfolioMS.backend.entities.User;
+import com.kjoseph.portfolioMS.backend.model.User;
 import com.kjoseph.portfolioMS.backend.repository.UserRepository;
 
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.kjoseph.portfolioMS.backend.service.UserDetailsServicePMS;
+import com.kjoseph.portfolioMS.backend.security.UserDetailsServicePMS;
 
 @Configuration
 @EnableWebSecurity
