@@ -22,6 +22,9 @@ public class UserDetailsPMS implements UserDetails {
         return Arrays.asList(authority);
 	}
 
+	public long getId() {
+		return user.getId();
+	}
 	@Override
 	public String getPassword() {
 		return user.getPassword();

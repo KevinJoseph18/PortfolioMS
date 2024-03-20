@@ -14,11 +14,15 @@ public class User {
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+	@Column(unique=true)
 	private String username;
 	private String password;
 	private String role;
 	private boolean enabled;
+	
+	public long getId() {
+		return id;
+	}
 
 	public String getUsername() {
 		return username;

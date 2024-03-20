@@ -13,4 +13,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 	@Query("SELECT u FROM User u WHERE u.id = :userId")
 	public User getUserById(@Param("userId") Long userId);
+	
 }

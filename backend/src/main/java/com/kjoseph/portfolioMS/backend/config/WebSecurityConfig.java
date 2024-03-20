@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.*;
 import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.*;
@@ -52,7 +53,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
             .ignoring()
-            .antMatchers("/h2-console/**");
+            .antMatchers("/h2-console/**")
+            //.antMatchers(HttpMethod.GET, "/assets/**")
+            //.antMatchers(HttpMethod.PUT, "/assets/**")
+            //.antMatchers(HttpMethod.POST, "/assets/**")
+            //.antMatchers(HttpMethod.DELETE, "/assets/**")
+            .antMatchers(HttpMethod.POST, "/buyAsset/**");        
     }
     
     @Override
