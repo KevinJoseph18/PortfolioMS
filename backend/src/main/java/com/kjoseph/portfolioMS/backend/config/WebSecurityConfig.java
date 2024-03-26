@@ -49,16 +49,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          
         return authProvider;
     }
+    
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
             .ignoring()
             .antMatchers("/h2-console/**")
-            //.antMatchers(HttpMethod.GET, "/assets/**")
-            //.antMatchers(HttpMethod.PUT, "/assets/**")
-            //.antMatchers(HttpMethod.POST, "/assets/**")
-            //.antMatchers(HttpMethod.DELETE, "/assets/**")
-            .antMatchers(HttpMethod.POST, "/buyAsset/**");        
+        	.antMatchers("/assets/**");
     }
     
     @Override

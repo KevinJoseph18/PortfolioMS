@@ -74,7 +74,7 @@ public class MainController {
 	}
 	
 	public ResponseEntity<Asset> updateExistingAssetCount(Asset oldAsset, Asset asset) {
-		// check preconditions
+		// check precondition
 		Asset updatedAsset = oldAsset;
 		updatedAsset.setAvgPurchasePrice(updatedAsset.getAvgPurchasePrice() * updatedAsset.getAmount() + asset.getAvgPurchasePrice() * asset.getAmount());
 		updatedAsset.setAmount(updatedAsset.getAmount() + asset.getAmount());
@@ -90,8 +90,8 @@ public class MainController {
 		return assetRepository.getMyPortfolio(u.getId());
 	}
 	
-	@PostMapping("/buyAsset")
-	public ResponseEntity<Asset> buyAsset(@Valid @RequestBody Asset asset){
+	@PostMapping("/assets/buy")
+	public ResponseEntity<Asset> buyAsset(@Valid @RequestBody Asset asset) {
 		Asset updatedAsset = assetRepository.getAssetByPortfolioTicker(asset.getPortfolioId(), asset.getTicker());
 		if (updatedAsset == null) {
 			updatedAsset = asset;
@@ -102,5 +102,23 @@ public class MainController {
 			updatedAsset.setAvgPurchasePrice(updatedAsset.getAvgPurchasePrice()/updatedAsset.getAmount());
 		}
 		return ResponseEntity.ok().body(assetRepository.save(updatedAsset));
+	}
+	
+	@PostMapping("/assets/sell")
+	public ResponseEntity<Asset> sellAsset(@Valid @RequestBody Asset toSell) {
+		Asset myAsset = assetRepository.getAssetByPortfolioTicker(toSell.getPortfolioId(), toSell.getTicker());
+		if (myAsset.getAmount() < toSell.getAmount()) {
+			// TODO some exception
+			return ResponseEntity.unprocessableEntity().body(myAsset);
+		}
+		else if (myAsset.getAmount() == toSell.getAmount()) {
+			assetRepository.delete(myAsset);
+		}
+		else {
+			myAsset.setAmount(myAsset.getAmount() - toSell.getAmount());
+			assetRepository.save(myAsset);
+		}
+		return ResponseEntity.ok().body(myAsset);
+		
 	}
 }
